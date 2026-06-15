@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./components/card.jsx";
 import {getData} from "./constans/db.js"
 import Cart from "./components/cart.jsx";
 
+
+
+const telegram=window.Telegram.WebApp
 function App() {
+
+
+
+  useEffect(()=>{
+    telegram.ready()
+  },[])
   const data=getData()
   const [items,setItems]=useState([])
 
@@ -31,11 +40,18 @@ function App() {
   }
 
 
+
+  const onCheckout=()=>{
+       telegram.MainButton.text="Tolov qiling"
+       telegram.MainButton.show()      
+  }
+
+
   return (
     <div className="w-full h-full bg-zinc-900">
       <div className="w-full container min-h-screen  flex flex-wrap  items-center justify-around pt-20 gap-30  mx-auto px-40">
         <h1 className="text-4xl text-gray-100 font-bold">Kurslar ro'yxati</h1>
-        < Cart  arr={items}  />
+        <Cart  arr={items}   onCheckout={onCheckout}  />
         <div className="w-full h-auto p-4 flex flex-wrap justify-center ">
             {
               data.map((item,index)=>(

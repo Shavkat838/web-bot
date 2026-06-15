@@ -21,7 +21,7 @@ export default function Card(props) {
   }
   return (
     <div className="w-90  mx-3 my-3 p-2  flex flex-wrap relative justify-around   bg-[#202020] rounded-[10px]">
-      <div className={` ${ count===0 &&"hidden transition-all  "}    absolute  -top-5  -right-5    w-10 h-10 rounded-full   bg-amber-600  flex items-center justify-center text-white text-2xl  shadow-md hover:bg-amber-700  opacity-50  transition-all`}>
+      <div className={` ${ count===0 &&"hidden transition-all opacity-0 pointer-events-none "}  transition-opacity duration-500  absolute  -top-5  -right-5  opacity-100   w-10 h-10 rounded-full   bg-amber-600  flex items-center justify-center text-white text-2xl  shadow-md hover:bg-amber-700  opacity-50  `}>
         {count}
       </div>
       <img
