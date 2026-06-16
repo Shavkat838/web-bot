@@ -48,25 +48,9 @@ function App() {
 
 
 
-const onSendData = useCallback(() => {
-  try {
-    alert("1. MainButton bosildi!");
-    
-    if (!telegram) {
-      alert("Xato: Telegram SDK topilmadi!");
-      return;
-    }
-
-    alert("2. Yuborilayotgan ma'lumot: " + JSON.stringify(items));
-    
-    // Telegramga yuborishni urunib ko'ramiz
-    telegram.sendData(JSON.stringify(items));
-    
-    alert("3. sendData qatori bajarildi!");
-  } catch (error) {
-    alert("Dasturda xatolik yuz berdi: " + error.message);
-  }
-}, [items]);
+  const onSendData=useCallback(()=>{
+    telegram.sendData(JSON.stringify(items))
+  },[items])
 
 
   useEffect(()=>{
@@ -78,7 +62,7 @@ const onSendData = useCallback(() => {
   return (
     <div className="w-full h-full bg-zinc-900">
       <div className="w-full container min-h-screen  flex flex-wrap  items-center justify-around pt-20 gap-30  mx-auto px-40">
-        <h1 className="text-4xl text-gray-100 font-bold">Kurslar </h1>
+        <h1 className="text-4xl text-gray-100 font-bold">Kurslar ro'yxati</h1>
         <Cart  arr={items}   onCheckout={onCheckout}  />
         <div className="w-full h-auto p-4 flex flex-wrap justify-center ">
             {
