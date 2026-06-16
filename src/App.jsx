@@ -34,7 +34,7 @@ function App() {
         const newData=items.filter((c)=>c.id!==existItem.id)
         setItems(newData)
       }else{
-        const newData=items.map((c)=>c.id===existItem.id?{...existItem,quantity:existItem.quantity-1}:c)
+        const newData=items.map((c)=>c.id===existItem.id?{...existItem,quantity:existItem?.quantity-1}:c)
         setItems(newData)
       }
   }
@@ -55,7 +55,7 @@ function App() {
 
   useEffect(()=>{
     telegram.onEvent("mainButtonClicked",onSendData)
-    return telegram.offEvent("mainButtonClicked",onSendData)
+    return ()=>{telegram.offEvent("mainButtonClicked",onSendData)}
   },[onSendData])
 
 
