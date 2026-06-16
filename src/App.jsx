@@ -78,7 +78,7 @@ const onSendData = useCallback(() => {
   return (
     <div className="w-full h-full bg-zinc-900">
       <div className="w-full container min-h-screen  flex flex-wrap  items-center justify-around pt-20 gap-30  mx-auto px-40">
-        <h1 className="text-4xl text-gray-100 font-bold">Kurslar ro'yxati</h1>
+        <h1 className="text-4xl text-gray-100 font-bold">Kurslar </h1>
         <Cart  arr={items}   onCheckout={onCheckout}  />
         <div className="w-full h-auto p-4 flex flex-wrap justify-center ">
             {
