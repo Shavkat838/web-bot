@@ -48,9 +48,25 @@ function App() {
 
 
 
-  const onSendData=useCallback(()=>{
-    telegram.sendData(JSON.stringify(items))
-  },[items])
+const onSendData = useCallback(() => {
+  try {
+    alert("1. MainButton bosildi!");
+    
+    if (!telegram) {
+      alert("Xato: Telegram SDK topilmadi!");
+      return;
+    }
+
+    alert("2. Yuborilayotgan ma'lumot: " + JSON.stringify(items));
+    
+    // Telegramga yuborishni urunib ko'ramiz
+    telegram.sendData(JSON.stringify(items));
+    
+    alert("3. sendData qatori bajarildi!");
+  } catch (error) {
+    alert("Dasturda xatolik yuz berdi: " + error.message);
+  }
+}, [items]);
 
 
   useEffect(()=>{
